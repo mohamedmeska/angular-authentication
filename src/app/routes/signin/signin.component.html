@@ -1,0 +1,25 @@
+<div class="route signin-route">
+  <form [formGroup]="signinForm" (ngSubmit)="handleSignin()">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        formControlName="username"
+        placeholder="Enter Username"
+      />
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter Password"
+      />
+    </div>
+    <input type="submit" value="Sign In" [disabled]="!signinForm.valid" />
+  </form>
+</div>

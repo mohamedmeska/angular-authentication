@@ -1,0 +1,18 @@
+<header>
+  <a routerLink="home" class="logo">
+    <strong>LOGO</strong>
+  </a>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="home" routerLinkActive="active">Home</a>
+      </li>
+      <li *ngIf="!isLoggedIn">
+        <a routerLink="signin" routerLinkActive="active">Sign In</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <button (click)="handleSignout()">Sign Out</button>
+      </li>
+    </ul>
+  </nav>
+</header>
