@@ -1,7 +1,10 @@
 <div class="route signin-route">
   <form [formGroup]="signinForm" (ngSubmit)="handleSignin()">
     <div class="input-group">
-      <label for="username">Username</label>
+      <label for="username">
+        Username
+        <span class="required-field">*</span>
+      </label>
       <input
         type="text"
         name="username"
@@ -9,9 +12,23 @@
         formControlName="username"
         placeholder="Enter Username"
       />
+      <div
+        *ngIf="
+          signinForm.controls.username.dirty &&
+          signinForm.controls.username.errors
+        "
+        class="input-errors username-errors"
+      >
+        <p *ngIf="signinForm.controls.username.errors.required">
+          This field is required!
+        </p>
+      </div>
     </div>
     <div class="input-group">
-      <label for="password">Password</label>
+      <label for="password">
+        Password
+        <span class="required-field">*</span>
+      </label>
       <input
         type="password"
         name="password"
@@ -19,7 +36,21 @@
         formControlName="password"
         placeholder="Enter Password"
       />
+      <div
+        *ngIf="
+          signinForm.controls.password.dirty &&
+          signinForm.controls.password.errors
+        "
+        class="input-errors password-errors"
+      >
+        <p *ngIf="signinForm.controls.password.errors.required">
+          This field is required!
+        </p>
+      </div>
     </div>
+    <p *ngIf="signinError" class="signin-error">
+      {{ signinError }}
+    </p>
     <input type="submit" value="Sign In" [disabled]="!signinForm.valid" />
   </form>
 </div>

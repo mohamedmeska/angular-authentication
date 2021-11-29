@@ -12,6 +12,7 @@ import { AuthService } from 'src/shared/services/auth.service';
 export class SigninComponent implements OnInit {
 
   signinForm: FormGroup;
+  signinError: string;
 
   constructor(
     private _authService: AuthService,
@@ -46,7 +47,7 @@ export class SigninComponent implements OnInit {
         this._router.navigate(['home']);
       },
       (error) => {
-        console.log('error: ', error);
+        this.signinError = error;
       }
     );
   }
